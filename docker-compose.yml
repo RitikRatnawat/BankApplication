@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  bank_app:
+    build: ./Banking_System
+    volumes:
+      - static_vol:/bank_app/static
+      - media_vol:/bank_app/media
+    ports:
+      - "8000:8000"
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_vol:/bank_app/static
+      - media_vol:/bank_app/media
+    ports:
+      - "80:80"
+    depends_on:
+      - bank_app
+
+volumes:
+  static_vol:
+  media_vol:
