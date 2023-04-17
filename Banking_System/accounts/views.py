@@ -92,8 +92,7 @@ def transfer_amount(request, from_user_id):
             to_acc_serializer.save()
             return Response({
                 "message": "Transaction Successful",
-                "from_balance": from_acc_serializer.data['balance'],
-                "to_balance": to_acc_serializer.data['balance']
+                "avail_balance": from_acc_serializer.data['balance'],
             }, status=status.HTTP_200_OK)
 
     except TypeError:
